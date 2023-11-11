@@ -4,6 +4,7 @@ export default {
     extend: {
       colors: {
         "default-gray": "#eff2f5",
+        "border-gray": "#DEE1E6",
         "f-primary": "#0f1629",
         "default-blue": "#0052fe",
         "blue-btn-text": "#0141cf",
