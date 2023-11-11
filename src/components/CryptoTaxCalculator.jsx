@@ -1,6 +1,10 @@
+import DesktopCard from "./DesktopCard";
+import FaqContent from "./FaqContent";
+import MobileCard from "./MobileCard";
+
 const CryptoTaxCalculator = () => {
   return (
-    <div className="bg-default-gray max-w-[83rem] mx-auto lg:flex  gap-1 ">
+    <div className="bg-default-gray max-w-[83rem] mx-auto xl:flex  gap-1 ">
       <div className=" bg-white w-full max-w-[55.0625rem] lg:bg-default-gray pt-4 px-4  lg:pt-0 ">
         <div className="px-4  max-w-[55.0625rem] mx-auto bg-white  md:mt-7 lg:mb-5 rounded-2xl p-[1.0625rem] lg:pt-[2.1875rem] lg:pb-[3.625rem] lg:ps-[4.9375rem] lg:pe-[4.5625rem] border border-border-gray lg:border-none">
           <h1 className=" font-bold text-2xl leading-[2.125rem] text-center pb-7 lg:pb-10">
@@ -18,7 +22,7 @@ const CryptoTaxCalculator = () => {
                   id="country"
                   className="bg-default-gray w-full h-10 px-4 py-2 max-w-[17.0625rem] md:h-12 md:p-3 rounded-lg">
                   <option
-                    value="23"
+                    // value="23"
                     selected
                     className="text-f-primary text-base font-medium ">
                     FY 2023-24
@@ -34,7 +38,7 @@ const CryptoTaxCalculator = () => {
                   id="country"
                   className="bg-default-gray w-full  h-10 px-4 py-2 max-w-[17.0625rem] md:h-12 md:p-3 rounded-lg">
                   <option
-                    value="Australia"
+                    // value="Australia"
                     selected
                     className="text-f-primary text-base font-medium">
                     Australia
@@ -188,16 +192,19 @@ const CryptoTaxCalculator = () => {
           </div>
         </div>
         {/* FAQ */}
-        <div className="bg-white max-w-[55.0625rem] mx-auto h-[37.5rem] pt-12 lg:pt-6 lg:px-6 lg:pb-10 rounded-2xl">
-          <h2 className="text-2xl font-bold  leading-5">
+        <div className="bg-white max-w-[55.0625rem] mx-auto  pt-12 pb-16 lg:pt-6 lg:px-6 lg:pb-10 rounded-2xl">
+          <h2 className="text-2xl font-bold  leading-5 mb-4 lg:pb-4">
             Frequently Asked Questions
           </h2>
-          <div className="max-w-[51.875rem] border border-black">faqs</div>
+          <div className="max-w-[51.875rem]">
+            <FaqContent />
+          </div>
         </div>
       </div>
       {/* card */}
       <div className=" mt-[4.25rem] mb-[3.875rem] lg:mt-7 lg:mb-0">
-        <div className="bg-default-blue mx-auto  w-96 max-w-[26.6875rem] h-96   rounded-2xl"></div>
+        <MobileCard className="xl:hidden" />
+        <DesktopCard className="hidden xl:block" />
       </div>
     </div>
   );
