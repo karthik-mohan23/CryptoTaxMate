@@ -9,8 +9,33 @@ const CryptoTaxCalculator = () => {
     salePrice: "",
     expenses: "",
     investmentType: "",
-    annualIncome: "",
   });
+
+  // income option
+  const [selectedAnnualIncomeOption, setSelectedAnnualIncomeOption] =
+    useState("$0 - $18,200");
+
+  //  function to calculate the tax value based on the selected option
+  const calculateTaxValue = (selectedOption) => {
+    switch (selectedOption) {
+      case "$0 - $18,200":
+        return "0%";
+      case "$18,201 - $45,000":
+        return "Nil + 19% of excess over $18,200";
+      case "$45,001 - $120,000":
+        return "$5,092 + 32.5% of excess over $45,000";
+      case "$120,001 - $180,000":
+        return "$29,467 + 37% of excess over $120,000";
+      case "$180,001+":
+        return "$51,667 + 45% of excess over $180,000";
+      default:
+        return "Invalid option";
+    }
+  };
+  // Update the tax value whenever the selected option changes
+  const handleAnnualIncomeChange = (event) => {
+    setSelectedAnnualIncomeOption(event.target.value);
+  };
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -150,7 +175,10 @@ const CryptoTaxCalculator = () => {
                 <label className="text-f-primary text-sm text-[0.9375rem] mb-[6px]">
                   Select Your Annual Income
                 </label>
-                <select className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
+                <select
+                  className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg"
+                  value={selectedAnnualIncomeOption}
+                  onChange={handleAnnualIncomeChange}>
                   <option className="text-f-primary text-base font-medium">
                     $0 - $18,200
                   </option>
@@ -161,7 +189,7 @@ const CryptoTaxCalculator = () => {
                     $45,001 - $120,000
                   </option>
                   <option className="text-f-primary text-base font-medium">
-                    $120,000 - $180,000
+                    $120,001 - $180,000
                   </option>
                   <option className="text-f-primary text-base font-medium">
                     $180,001+
@@ -173,8 +201,8 @@ const CryptoTaxCalculator = () => {
                 <p className="text-xs lg:text-sm text-btn-border-gray leading-6 self-start">
                   Tax Rate:
                 </p>
-                <p className="text-xs lg:text-sm text-btn-border-gray self-start">
-                  $ 5,902 + 32.5% of excess over $45,001
+                <p className="text-xs lg:text-sm text-btn-border-gray lg:self-start">
+                  {calculateTaxValue(selectedAnnualIncomeOption)}
                 </p>
               </div>
             </div>
