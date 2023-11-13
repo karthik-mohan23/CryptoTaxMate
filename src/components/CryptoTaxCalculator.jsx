@@ -24,7 +24,7 @@ const CryptoTaxCalculator = () => {
       // Remove the negative symbol
       // Use parseFloat to handle decimal input
       const sanitizedValue = Math.abs(parseFloat(value));
-      // Update the inputValues object with the new value for the specified field
+      // Update the inputValues object
       setInputValues({
         ...inputValues,
         [name]: sanitizedValue.toString(), // to fix Received NaN for the `value` attribute. If this is expected, cast the value to a string.
@@ -335,7 +335,7 @@ const CryptoTaxCalculator = () => {
             </p>
           </div>
         </div>
-        {/* end row */}
+        {/* end of sixth row */}
       </div>
     </div>
   );
