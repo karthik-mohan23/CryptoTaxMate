@@ -4,11 +4,7 @@ const Navbar = () => {
   return (
     <header className="w-full  bg-white text-f-primary drop-shadow">
       <div className="w-[90%] max-w-[83rem] mx-auto  flex justify-between items-center py-4">
-        <img
-          src={logo}
-          alt="KoinX"
-          className="w-20 h-[20.5px] lg:w-24 lg:h-6"
-        />
+        <img src={logo} alt="KoinX" className="w-20  lg:w-[94px] " />
         {/* large screens */}
         <nav className="hidden  text-f-primary text-base font-semibold lg:flex items-center gap-[69px]">
           <ul className=" flex items-center gap-8">
