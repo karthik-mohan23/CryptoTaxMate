@@ -1,18 +1,8 @@
 import { useState } from "react";
 import DesktopCard from "./DesktopCard";
-import FaqContent from "./FaqContent";
 import MobileCard from "./MobileCard";
-
-const investmentTypeTerm = [
-  {
-    title: "Short Term",
-    duration: " < 12 months",
-  },
-  {
-    title: "Long Term",
-    duration: " > 12 months",
-  },
-];
+import FaqContent from "./FaqContent";
+import { investmentTypeTerm } from "../utils/investTypeTerm";
 
 const CryptoTaxCalculator = () => {
   const [inputValues, setInputValues] = useState({
@@ -89,6 +79,7 @@ const CryptoTaxCalculator = () => {
   };
 
   let { purchasePrice, salePrice, expenses } = inputValues;
+  // to fix bug showing NaN when input field is cleared
   // if invalid number change to 0
   if (isNaN(purchasePrice)) {
     purchasePrice = 0;
@@ -112,7 +103,7 @@ const CryptoTaxCalculator = () => {
   // calculate Net Capital Gains Amount
   const netCGA =
     btnIndex === 0
-      ? salePrice - purchasePrice - expenses
+      ? capitalGainsAmount
       : capitalGainsAmount - discountForLongTermGains;
 
   // Calculate the tax rate based on the selected option
@@ -169,6 +160,7 @@ const CryptoTaxCalculator = () => {
                   <span>$</span>
                   <input
                     type="number"
+                    placeholder="0"
                     value={inputValues.purchasePrice}
                     name="purchasePrice"
                     onChange={(event) => handleInputChange(event)}
@@ -185,6 +177,7 @@ const CryptoTaxCalculator = () => {
                   <input
                     className="bg-default-gray w-full h-full px-4 py-2 md:p-3    text-f-primary text-base font-medium outline-none"
                     type="number"
+                    placeholder="0"
                     value={inputValues.salePrice}
                     name="salePrice"
                     onChange={(event) => handleInputChange(event)}></input>
@@ -204,6 +197,7 @@ const CryptoTaxCalculator = () => {
                   <input
                     className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
                     type="number"
+                    placeholder="0"
                     value={inputValues.expenses}
                     name="expenses"
                     onChange={(event) => handleInputChange(event)}></input>
@@ -248,7 +242,7 @@ const CryptoTaxCalculator = () => {
                           type.title
                         )}
                       </button>
-                      <p className="text-[13px] font-medium text-btn-border-gray">
+                      <p className="text-[13px] lg:text-[15px] font-medium text-btn-border-gray leading-6">
                         {type.duration}
                       </p>
                     </div>
@@ -339,8 +333,8 @@ const CryptoTaxCalculator = () => {
                 <p className="font-bold text-2xl text-blue-btn-text text-center">
                   {taxToPay
                     ? taxToPay < 0
-                      ? `-$${Math.abs(taxToPay).toFixed(2)}`
-                      : `$${taxToPay.toFixed(2)}`
+                      ? `-$${Math.abs(taxToPay).toFixed(1)}`
+                      : `$${taxToPay.toFixed(1)}`
                     : "$0"}
                 </p>
               </div>

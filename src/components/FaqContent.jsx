@@ -1,4 +1,4 @@
-import { faqs } from "../faq.js";
+import { faqs } from "../utils/faq.js";
 
 const FaqContent = () => {
   return (
