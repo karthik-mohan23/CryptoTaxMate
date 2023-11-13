@@ -48,4 +48,4 @@ The calculations for this scenario are as follows:
 
 ### Deployment
 
-The application has been deployed using the popular hosting platform Netlify, ensuring seamless accessibility for users. You can access the application by following this [Visit the Crypto Tax Calculator](https://koinx-crypto-tax-calculator.netlify.app/){:target="\_blank"}.
+The application has been deployed using the popular hosting platform Netlify, ensuring seamless accessibility for users. You can access the application by following this <a href="https://koinx-crypto-tax-calculator.netlify.app/" target="_blank">Visit the Crypto Tax Calculator</a>.
