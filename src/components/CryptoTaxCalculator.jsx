@@ -39,6 +39,9 @@ const CryptoTaxCalculator = () => {
     setBtnIndex(index);
   };
 
+  // capital gains amount
+  const capitalGainsAmount = salePrice - purchasePrice - expenses;
+
   // calculate Net Capital Gains Amount
   const netCGA = btnIndex === 0 ? salePrice - purchasePrice - expenses : 0;
 
@@ -285,11 +288,10 @@ const CryptoTaxCalculator = () => {
                   <label className="text-f-primary text-[0.9375rem] ">
                     Capital gains amount
                   </label>
-                  <div className="flex items-center bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
-                    <span>$</span>
-                    <input
-                      className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
-                      value=""></input>
+                  <div className=" bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
+                    {capitalGainsAmount < 0
+                      ? `- $ ${Math.abs(capitalGainsAmount)}`
+                      : `$ ${capitalGainsAmount}`}
                   </div>
                 </div>
                 {/* Discount for long term gains */}
