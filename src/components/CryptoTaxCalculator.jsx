@@ -33,22 +33,42 @@ const CryptoTaxCalculator = () => {
   if (isNaN(expenses)) {
     expenses = 0;
   }
-  const netCGAForShortTerm = salePrice - purchasePrice - expenses;
 
   const [btnIndex, setBtnIndex] = useState(1);
   const handleBtnIndex = (index) => {
     setBtnIndex(index);
   };
 
-  // income option
+  // calculate Net Capital Gains Amount
+  const netCGA = btnIndex === 0 ? salePrice - purchasePrice - expenses : 0;
+
+  // annual income
   const [selectedAnnualIncomeOption, setSelectedAnnualIncomeOption] =
     useState("$0 - $18,200");
 
-  //  function to calculate the tax value based on the selected option
-  const calculateTaxValue = (selectedOption) => {
+  // Function to calculate the tax rate based on the selected option
+  const calculateTaxRate = (selectedOption) => {
     switch (selectedOption) {
       case "$0 - $18,200":
-        return "0%";
+        return 0; // 0%
+      case "$18,201 - $45,000":
+        return 0.19; // 19%
+      case "$45,001 - $120,000":
+        return 0.325; // 32.5%
+      case "$120,001 - $180,000":
+        return 0.37; // 37%
+      case "$180,001+":
+        return 0.45; // 45%
+      default:
+        return 0; // Default to 0%
+    }
+  };
+
+  // Function to calculate tax details text based on the selected option to display on UI
+  const calculateTaxDetails = (selectedOption) => {
+    switch (selectedOption) {
+      case "$0 - $18,200":
+        return "0% - No tax";
       case "$18,201 - $45,000":
         return "Nil + 19% of excess over $18,200";
       case "$45,001 - $120,000":
@@ -61,7 +81,14 @@ const CryptoTaxCalculator = () => {
         return "Invalid option";
     }
   };
-  // Update the tax value whenever the selected option changes
+
+  // Calculate the tax rate based on the selected option
+  const taxRate = calculateTaxRate(selectedAnnualIncomeOption);
+
+  // Calculate the tax you need to pay by multiplying net capital gains by the tax rate
+  const taxToPay = netCGA * taxRate;
+
+  // Function to handle annual income option change
   const handleAnnualIncomeChange = (event) => {
     setSelectedAnnualIncomeOption(event.target.value);
   };
@@ -226,24 +253,16 @@ const CryptoTaxCalculator = () => {
                   Select Your Annual Income
                 </label>
                 <select
-                  className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg"
+                  className="bg-default-gray w-full h-10 px-4 py-2 md:h-12 md:p-3 rounded-lg"
                   value={selectedAnnualIncomeOption}
                   onChange={handleAnnualIncomeChange}>
-                  <option className="text-f-primary text-base font-medium">
-                    $0 - $18,200
-                  </option>
-                  <option className="text-f-primary text-base font-medium">
-                    $18,201 - $45,000
-                  </option>
-                  <option className="text-f-primary text-base font-medium">
-                    $45,001 - $120,000
-                  </option>
-                  <option className="text-f-primary text-base font-medium">
+                  <option value="$0 - $18,200">$0 - $18,200</option>
+                  <option value="$18,201 - $45,000">$18,201 - $45,000</option>
+                  <option value="$45,001 - $120,000">$45,001 - $120,000</option>
+                  <option value="$120,001 - $180,000">
                     $120,001 - $180,000
                   </option>
-                  <option className="text-f-primary text-base font-medium">
-                    $180,001+
-                  </option>
+                  <option value="$180,001+">$180,001+</option>
                 </select>
               </div>
               {/* Tax rate */}
@@ -252,7 +271,7 @@ const CryptoTaxCalculator = () => {
                   Tax Rate:
                 </p>
                 <p className="text-xs lg:text-sm text-btn-border-gray lg:self-start">
-                  {calculateTaxValue(selectedAnnualIncomeOption)}
+                  {calculateTaxDetails(selectedAnnualIncomeOption)}
                 </p>
               </div>
             </div>
@@ -297,14 +316,11 @@ const CryptoTaxCalculator = () => {
                   Net Capital gains tax amount
                 </p>
                 <p className="font-bold text-2xl text-green-btn-text text-center">
-                  {/* display netCGAForShortTerm for short term investment type else netCGAForLongTerm */}
-                  {btnIndex === 0
-                    ? isNaN(netCGAForShortTerm)
-                      ? "$0" // Set to $0 if it's NaN
-                      : netCGAForShortTerm < 0
-                      ? `- $${Math.abs(netCGAForShortTerm)}`
-                      : `$${netCGAForShortTerm}`
-                    : ""}
+                  {isNaN(netCGA)
+                    ? "$0"
+                    : netCGA < 0
+                    ? `- $${Math.abs(netCGA)}`
+                    : `$${netCGA}`}
                 </p>
               </div>
               {/* The tax you need to pay */}
@@ -313,7 +329,11 @@ const CryptoTaxCalculator = () => {
                   The tax you need to pay*
                 </p>
                 <p className="font-bold text-2xl text-blue-btn-text text-center">
-                  $ 812.5
+                  {taxToPay
+                    ? taxToPay < 0
+                      ? `-$${Math.abs(taxToPay).toFixed(2)}`
+                      : `$${taxToPay.toFixed(2)}`
+                    : "$0"}
                 </p>
               </div>
             </div>
