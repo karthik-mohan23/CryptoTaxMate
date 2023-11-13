@@ -1,9 +1,9 @@
-import { faqs } from "../utils/faq.js";
+import { faqSmall } from "../utils/faq.js";
 
-const FaqContent = () => {
+const FaqContentSmall = (props) => {
   return (
-    <div className="w-full">
-      {faqs.map((faq, index) => {
+    <div className={`w-full ${props.className ? props.className : ""}`}>
+      {faqSmall.map((faq, index) => {
         const { question, answer } = faq;
         return (
           <div key={question} className="my-[15px]">
@@ -20,4 +20,4 @@ const FaqContent = () => {
     </div>
   );
 };
-export default FaqContent;
+export default FaqContentSmall;

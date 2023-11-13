@@ -329,8 +329,8 @@ const CryptoTaxCalculator = () => {
             <p className="font-bold text-2xl text-blue-btn-text text-center">
               {taxToPay
                 ? taxToPay < 0 //if less than 0
-                  ? `-$${Math.abs(taxToPay).toFixed(1)}` //If -ve, put -ve before $
-                  : `$${taxToPay.toFixed(1)}`
+                  ? `-$${Math.abs(taxToPay).toFixed(3)}` //If -ve, put -ve before $
+                  : `$${taxToPay.toFixed(3)}`
                 : "$0"}
             </p>
           </div>
