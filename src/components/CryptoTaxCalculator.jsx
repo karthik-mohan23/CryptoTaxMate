@@ -22,6 +22,19 @@ const CryptoTaxCalculator = () => {
     investmentType: "",
   });
 
+  let { purchasePrice, salePrice, expenses } = inputValues;
+  // if invalid number change to 0
+  if (isNaN(purchasePrice)) {
+    purchasePrice = 0;
+  }
+  if (isNaN(salePrice)) {
+    salePrice = 0;
+  }
+  if (isNaN(expenses)) {
+    expenses = 0;
+  }
+  const netCGAForShortTerm = salePrice - purchasePrice - expenses;
+
   const [btnIndex, setBtnIndex] = useState(1);
   const handleBtnIndex = (index) => {
     setBtnIndex(index);
@@ -68,8 +81,6 @@ const CryptoTaxCalculator = () => {
       });
     }
   };
-
-  console.log(btnIndex);
 
   return (
     <div className="bg-default-gray max-w-[83rem] mx-auto xl:flex  gap-1 ">
@@ -286,7 +297,14 @@ const CryptoTaxCalculator = () => {
                   Net Capital gains tax amount
                 </p>
                 <p className="font-bold text-2xl text-green-btn-text text-center">
-                  $ 2,500
+                  {/* display netCGAForShortTerm for short term investment type else netCGAForLongTerm */}
+                  {btnIndex === 0
+                    ? isNaN(netCGAForShortTerm)
+                      ? "$0" // Set to $0 if it's NaN
+                      : netCGAForShortTerm < 0
+                      ? `- $${Math.abs(netCGAForShortTerm)}`
+                      : `$${netCGAForShortTerm}`
+                    : ""}
                 </p>
               </div>
               {/* The tax you need to pay */}
