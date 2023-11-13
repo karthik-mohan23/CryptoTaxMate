@@ -3,7 +3,7 @@ import illustration from "../assets/illustration.png";
 const MobileCard = (props) => {
   return (
     <div
-      className={`bg-default-blue mx-auto  w-96 max-w-[26.6875rem]    rounded-2xl flex flex-col items-center justify-center gap-5 pt-[27px] pb-[33px] ${
+      className={`bg-default-blue mx-auto  w-full max-w-[26.6875rem]    rounded-2xl flex flex-col items-center justify-center gap-5 pt-[27px] pb-[33px] ${
         props.className ? props.className : ""
       }`}>
       <img

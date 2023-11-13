@@ -9,7 +9,6 @@ const CryptoTaxCalculator = () => {
     purchasePrice: "",
     salePrice: "",
     expenses: "",
-    investmentType: "",
   });
 
   const [btnIndex, setBtnIndex] = useState(1);
@@ -114,8 +113,8 @@ const CryptoTaxCalculator = () => {
 
   return (
     <div className="bg-default-gray max-w-[83rem] mx-auto xl:flex  gap-1 ">
-      <div className=" bg-white w-full max-w-[55.0625rem] lg:bg-default-gray pt-4 px-4  lg:pt-0 ">
-        <div className="px-4  max-w-[55.0625rem] mx-auto bg-white  md:mt-7 lg:mb-5 rounded-2xl p-[1.0625rem] lg:pt-[2.1875rem] lg:pb-[3.625rem] lg:ps-[4.9375rem] lg:pe-[4.5625rem] border border-border-gray lg:border-none">
+      <div className=" bg-white w-full max-w-[55.0625rem] xl:bg-default-gray pt-4 px-4  xl:pt-0 ">
+        <div className="w-[99%]  max-w-[55.0625rem] mx-auto bg-white  xl:mt-7 xl:mb-5 rounded-2xl p-[1.0625rem] xl:pt-[2.1875rem] xl:pb-[3.625rem] xl:ps-[4.9375rem] xl:pe-[4.5625rem] border border-border-gray xl:border-none">
           <h1 className=" font-bold text-2xl leading-[2.125rem] text-center pb-7 lg:pb-10">
             Free Crypto Tax Calculator Australia
           </h1>
@@ -343,7 +342,7 @@ const CryptoTaxCalculator = () => {
           </div>
         </div>
         {/* FAQ */}
-        <div className="bg-white max-w-[55.0625rem] mx-auto  pt-12 pb-16 lg:pt-6 lg:px-6 lg:pb-10 rounded-2xl">
+        <div className="bg-white w-[99%] max-w-[55.0625rem] mx-auto  pt-12 pb-16 lg:pt-6 lg:px-6 lg:pb-10 rounded-2xl">
           <h2 className="text-2xl font-bold  leading-5 mb-4 lg:pb-4">
             Frequently Asked Questions
           </h2>
@@ -353,7 +352,7 @@ const CryptoTaxCalculator = () => {
         </div>
       </div>
       {/* card */}
-      <div className=" mt-[4.25rem] mb-[3.875rem] lg:mt-7 lg:mb-0">
+      <div className="w-[95%] mx-auto mt-[4.25rem] mb-[3.875rem] lg:mt-7 lg:mb-0">
         <MobileCard className="xl:hidden" />
         <DesktopCard className="hidden xl:block" />
       </div>

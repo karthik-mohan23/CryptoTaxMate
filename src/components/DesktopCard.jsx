@@ -3,7 +3,7 @@ import illustration from "../assets/illustration.png";
 const DesktopCard = (props) => {
   return (
     <div
-      className={` bg-default-blue mx-auto  w-96 max-w-[26.6875rem]    rounded-2xl   py-[55px] ${
+      className={` bg-default-blue mx-auto  w-full max-w-[26.6875rem]    rounded-2xl   py-[55px] ${
         props.className ? props.className : ""
       }`}>
       <div className="flex flex-col gap-[45px] items-center justify-center">

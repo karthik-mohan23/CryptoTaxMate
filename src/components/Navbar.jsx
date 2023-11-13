@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 const Navbar = () => {
   return (
     <header className="w-full  bg-white text-f-primary drop-shadow">
-      <div className="w-[90%] max-w-[83rem] mx-auto h-20 flex justify-between items-center">
+      <div className="w-[90%] max-w-[83rem] mx-auto h-[60.75px] lg:h-20 flex justify-between items-center">
         <img
           src={logo}
           alt="KoinX"
