@@ -22,37 +22,10 @@ const CryptoTaxCalculator = () => {
     investmentType: "",
   });
 
-  let { purchasePrice, salePrice, expenses } = inputValues;
-  // if invalid number change to 0
-  if (isNaN(purchasePrice)) {
-    purchasePrice = 0;
-  }
-  if (isNaN(salePrice)) {
-    salePrice = 0;
-  }
-  if (isNaN(expenses)) {
-    expenses = 0;
-  }
-
   const [btnIndex, setBtnIndex] = useState(1);
   const handleBtnIndex = (index) => {
     setBtnIndex(index);
   };
-
-  // capital gains amount
-  const capitalGainsAmount = salePrice - purchasePrice - expenses;
-
-  // discount for long term gains
-  let discountForLongTermGains = 0;
-  if (capitalGainsAmount > 0 && btnIndex === 1) {
-    discountForLongTermGains = 0.5 * capitalGainsAmount;
-  }
-
-  // calculate Net Capital Gains Amount
-  const netCGA =
-    btnIndex === 0
-      ? salePrice - purchasePrice - expenses
-      : capitalGainsAmount - discountForLongTermGains;
 
   // annual income
   const [selectedAnnualIncomeOption, setSelectedAnnualIncomeOption] =
@@ -94,12 +67,6 @@ const CryptoTaxCalculator = () => {
     }
   };
 
-  // Calculate the tax rate based on the selected option
-  const taxRate = calculateTaxRate(selectedAnnualIncomeOption);
-
-  // Calculate the tax you need to pay by multiplying net capital gains by the tax rate
-  const taxToPay = netCGA * taxRate;
-
   // Function to handle annual income option change
   const handleAnnualIncomeChange = (event) => {
     setSelectedAnnualIncomeOption(event.target.value);
@@ -120,6 +87,39 @@ const CryptoTaxCalculator = () => {
       });
     }
   };
+
+  let { purchasePrice, salePrice, expenses } = inputValues;
+  // if invalid number change to 0
+  if (isNaN(purchasePrice)) {
+    purchasePrice = 0;
+  }
+  if (isNaN(salePrice)) {
+    salePrice = 0;
+  }
+  if (isNaN(expenses)) {
+    expenses = 0;
+  }
+
+  // capital gains amount
+  const capitalGainsAmount = salePrice - purchasePrice - expenses;
+
+  // discount for long term gains
+  let discountForLongTermGains = 0;
+  if (capitalGainsAmount > 0 && btnIndex === 1) {
+    discountForLongTermGains = 0.5 * capitalGainsAmount;
+  }
+
+  // calculate Net Capital Gains Amount
+  const netCGA =
+    btnIndex === 0
+      ? salePrice - purchasePrice - expenses
+      : capitalGainsAmount - discountForLongTermGains;
+
+  // Calculate the tax rate based on the selected option
+  const taxRate = calculateTaxRate(selectedAnnualIncomeOption);
+
+  // Calculate the tax you need to pay by multiplying net capital gains by the tax rate
+  const taxToPay = netCGA * taxRate;
 
   return (
     <div className="bg-default-gray max-w-[83rem] mx-auto xl:flex  gap-1 ">
