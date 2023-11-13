@@ -3,6 +3,17 @@ import DesktopCard from "./DesktopCard";
 import FaqContent from "./FaqContent";
 import MobileCard from "./MobileCard";
 
+const investmentTypeTerm = [
+  {
+    title: "Short Term",
+    duration: " < 12 months",
+  },
+  {
+    title: "Long Term",
+    duration: " > 12 months",
+  },
+];
+
 const CryptoTaxCalculator = () => {
   const [inputValues, setInputValues] = useState({
     purchasePrice: "",
@@ -10,6 +21,11 @@ const CryptoTaxCalculator = () => {
     expenses: "",
     investmentType: "",
   });
+
+  const [btnIndex, setBtnIndex] = useState(1);
+  const handleBtnIndex = (index) => {
+    setBtnIndex(index);
+  };
 
   // income option
   const [selectedAnnualIncomeOption, setSelectedAnnualIncomeOption] =
@@ -52,6 +68,9 @@ const CryptoTaxCalculator = () => {
       });
     }
   };
+
+  console.log(btnIndex);
+
   return (
     <div className="bg-default-gray max-w-[83rem] mx-auto xl:flex  gap-1 ">
       <div className=" bg-white w-full max-w-[55.0625rem] lg:bg-default-gray pt-4 px-4  lg:pt-0 ">
@@ -147,23 +166,60 @@ const CryptoTaxCalculator = () => {
                 </p>
                 {/* button 1 */}
                 <div className=" flex  w-full gap-[10px] items-center">
-                  <div className="flex flex-col w-full">
+                  {investmentTypeTerm.map((type, index) => (
+                    <div
+                      key={type.title}
+                      onClick={() => handleBtnIndex(index)}
+                      className="flex flex-col w-full">
+                      <button
+                        className={`text-xs md:text-lg    py-[12.5px] lg:py-[17px]   font-medium rounded-lg mb-1 flex-1 flex justify-center items-center gap-1 ${
+                          index === btnIndex
+                            ? "border-2 border-default-blue bg-default-blue text-default-blue bg-opacity-5"
+                            : "border  border-btn-border-gray"
+                        } `}>
+                        {index === btnIndex ? (
+                          <>
+                            {type.title}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4 md:w-6 md:h-6">
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M4.5 12.75l6 6 9-13.5"
+                              />
+                            </svg>
+                          </>
+                        ) : (
+                          type.title
+                        )}
+                      </button>
+                      <p className="text-[13px] font-medium text-btn-border-gray">
+                        {type.duration}
+                      </p>
+                    </div>
+                  ))}
+                  {/* <div className="flex flex-col w-full">
                     <button className="text-xs lg:text-lg  ps-3  py-[12.5px] lg:py-[17px]   pe-[71px] lg:px-0   border border-btn-border-gray font-medium rounded-lg mb-1 flex-1">
                       Short Term
                     </button>
                     <p className="text-[13px] font-medium text-btn-border-gray">
                       &lt; 12 months
                     </p>
-                  </div>
+                  </div> */}
                   {/* button 2 */}
-                  <div className="flex flex-col w-full">
+                  {/* <div className="flex flex-col w-full">
                     <button className="text-xs lg:text-lg ps-3  py-[12.5px] lg:py-[17px]   pe-[75px] lg:px-0 border-2 border-default-blue bg-default-blue text-default-blue bg-opacity-5 font-medium rounded-lg mb-1 flex-1">
                       Long Term
                     </button>
                     <p className="text-[13px] font-medium text-btn-border-gray">
                       &gt; 12 months
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
