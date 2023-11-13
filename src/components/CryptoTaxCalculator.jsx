@@ -42,8 +42,17 @@ const CryptoTaxCalculator = () => {
   // capital gains amount
   const capitalGainsAmount = salePrice - purchasePrice - expenses;
 
+  // discount for long term gains
+  let discountForLongTermGains = 0;
+  if (capitalGainsAmount > 0 && btnIndex === 1) {
+    discountForLongTermGains = 0.5 * capitalGainsAmount;
+  }
+
   // calculate Net Capital Gains Amount
-  const netCGA = btnIndex === 0 ? salePrice - purchasePrice - expenses : 0;
+  const netCGA =
+    btnIndex === 0
+      ? salePrice - purchasePrice - expenses
+      : capitalGainsAmount - discountForLongTermGains;
 
   // annual income
   const [selectedAnnualIncomeOption, setSelectedAnnualIncomeOption] =
@@ -299,11 +308,8 @@ const CryptoTaxCalculator = () => {
                   <label className="text-f-primary text-[0.9375rem]">
                     Discount for long term gains
                   </label>
-                  <div className="flex items-center bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
-                    <span>$</span>
-                    <input
-                      className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
-                      value=""></input>
+                  <div className=" bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
+                    $ {discountForLongTermGains}
                   </div>
                 </div>
               </div>
