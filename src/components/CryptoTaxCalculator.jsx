@@ -203,23 +203,6 @@ const CryptoTaxCalculator = () => {
                       </p>
                     </div>
                   ))}
-                  {/* <div className="flex flex-col w-full">
-                    <button className="text-xs lg:text-lg  ps-3  py-[12.5px] lg:py-[17px]   pe-[71px] lg:px-0   border border-btn-border-gray font-medium rounded-lg mb-1 flex-1">
-                      Short Term
-                    </button>
-                    <p className="text-[13px] font-medium text-btn-border-gray">
-                      &lt; 12 months
-                    </p>
-                  </div> */}
-                  {/* button 2 */}
-                  {/* <div className="flex flex-col w-full">
-                    <button className="text-xs lg:text-lg ps-3  py-[12.5px] lg:py-[17px]   pe-[75px] lg:px-0 border-2 border-default-blue bg-default-blue text-default-blue bg-opacity-5 font-medium rounded-lg mb-1 flex-1">
-                      Long Term
-                    </button>
-                    <p className="text-[13px] font-medium text-btn-border-gray">
-                      &gt; 12 months
-                    </p>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -264,32 +247,36 @@ const CryptoTaxCalculator = () => {
             </div>
             {/* end fourth row */}
             {/* fifth row */}
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
-              {/*  Capital gains amount */}
-              <div className=" flex flex-col gap-[6px] w-full ">
-                <label className="text-f-primary text-[0.9375rem] ">
-                  Capital gains amount
-                </label>
-                <div className="flex items-center bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
-                  <span>$</span>
-                  <input
-                    className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
-                    value=""></input>
+            {/* hide  Capital gains amount &  Discount for long term gains when short term is selected */}
+            {btnIndex == 1 && (
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
+                {/*  Capital gains amount */}
+                <div className=" flex flex-col gap-[6px] w-full ">
+                  <label className="text-f-primary text-[0.9375rem] ">
+                    Capital gains amount
+                  </label>
+                  <div className="flex items-center bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
+                    <span>$</span>
+                    <input
+                      className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
+                      value=""></input>
+                  </div>
+                </div>
+                {/* Discount for long term gains */}
+                <div className=" flex flex-col gap-[6px] w-full ">
+                  <label className="text-f-primary text-[0.9375rem]">
+                    Discount for long term gains
+                  </label>
+                  <div className="flex items-center bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
+                    <span>$</span>
+                    <input
+                      className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
+                      value=""></input>
+                  </div>
                 </div>
               </div>
-              {/* Discount for long term gains */}
-              <div className=" flex flex-col gap-[6px] w-full ">
-                <label className="text-f-primary text-[0.9375rem]">
-                  Discount for long term gains
-                </label>
-                <div className="flex items-center bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
-                  <span>$</span>
-                  <input
-                    className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
-                    value=""></input>
-                </div>
-              </div>
-            </div>
+            )}
+
             {/* end of fifth row */}
             {/* sixth row */}
             <div className="px-7 pt-9 lg:px-0 lg:pt-0 lg:flex lg:flex-row lg:items-center lg:gap-10">
