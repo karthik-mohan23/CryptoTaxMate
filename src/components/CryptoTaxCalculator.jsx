@@ -72,7 +72,7 @@ const CryptoTaxCalculator = () => {
       // Update the inputValues object with the new value for the specified field
       setInputValues({
         ...inputValues,
-        [name]: sanitizedValue,
+        [name]: sanitizedValue.toString(), // to fix Received NaN for the `value` attribute. If this is expected, cast the value to a string.
       });
     }
   };
