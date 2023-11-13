@@ -2,7 +2,7 @@ import { faqs } from "../utils/faq.js";
 
 const FaqContent = () => {
   return (
-    <div>
+    <div className="w-full">
       {faqs.map((faq, index) => {
         const { question, answer } = faq;
         return (

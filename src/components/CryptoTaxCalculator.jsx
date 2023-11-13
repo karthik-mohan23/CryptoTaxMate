@@ -112,9 +112,9 @@ const CryptoTaxCalculator = () => {
   const taxToPay = netCGA * taxRate;
 
   return (
-    <div className="bg-default-gray max-w-[83rem] mx-auto xl:flex  gap-1 ">
-      <div className=" bg-white w-full max-w-[55.0625rem] xl:bg-default-gray pt-4 px-4  xl:pt-0 ">
-        <div className="w-[99%]  max-w-[55.0625rem] mx-auto bg-white  xl:mt-7 xl:mb-5 rounded-2xl p-[1.0625rem] xl:pt-[2.1875rem] xl:pb-[3.625rem] xl:ps-[4.9375rem] xl:pe-[4.5625rem] border border-border-gray xl:border-none">
+    <div className="bg-default-gray w-full  max-w-[83rem] mx-auto xl:flex gap-5   ">
+      <div className=" bg-white w-full  max-w-[55.0625rem]  xl:bg-default-gray pt-4 px-4 sm:px-0  xl:pt-0 ">
+        <div className="w-[99%] sm:w-full xl:w-[55.0625rem] max-w-[55.0625rem] mx-auto bg-white  xl:mt-7 xl:mb-5 rounded-2xl p-[1.0625rem] xl:pt-[2.1875rem] xl:pb-[3.625rem] xl:ps-[4.9375rem] xl:pe-[4.5625rem] border border-border-gray xl:border-none">
           <h1 className=" font-bold text-2xl leading-[2.125rem] text-center pb-7 lg:pb-10">
             Free Crypto Tax Calculator Australia
           </h1>
@@ -197,21 +197,21 @@ const CryptoTaxCalculator = () => {
                     className="bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg text-f-primary text-base font-medium outline-none"
                     type="number"
                     placeholder="0"
-                    value={inputValues.expenses}
+                    value={inputValues?.expenses}
                     name="expenses"
                     onChange={(event) => handleInputChange(event)}></input>
                 </div>
               </div>
               {/* Investment type */}
               <div className="  w-full ">
-                <p className="text-f-primary text-sm pb-[6px]">
+                <p className="text-f-primary text-sm pb-[6px] leading-6">
                   Investment Type
                 </p>
                 {/* button 1 */}
                 <div className=" flex  w-full gap-[10px] items-center">
-                  {investmentTypeTerm.map((type, index) => (
+                  {investmentTypeTerm?.map((type, index) => (
                     <div
-                      key={type.title}
+                      key={type?.title}
                       onClick={() => handleBtnIndex(index)}
                       className="flex flex-col w-full">
                       <button
@@ -222,7 +222,7 @@ const CryptoTaxCalculator = () => {
                         } `}>
                         {index === btnIndex ? (
                           <>
-                            {type.title}
+                            {type?.title}
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -238,11 +238,11 @@ const CryptoTaxCalculator = () => {
                             </svg>
                           </>
                         ) : (
-                          type.title
+                          type?.title
                         )}
                       </button>
                       <p className="text-[13px] lg:text-[15px] font-medium text-btn-border-gray leading-6">
-                        {type.duration}
+                        {type?.duration}
                       </p>
                     </div>
                   ))}
@@ -291,6 +291,7 @@ const CryptoTaxCalculator = () => {
                     Capital gains amount
                   </label>
                   <div className=" bg-default-gray w-full  h-10 px-4 py-2  md:h-12 md:p-3 rounded-lg">
+                    {/* if negative value put -ve before $ */}
                     {capitalGainsAmount < 0
                       ? `- $ ${Math.abs(capitalGainsAmount)}`
                       : `$ ${capitalGainsAmount}`}
@@ -318,21 +319,21 @@ const CryptoTaxCalculator = () => {
                 </p>
                 <p className="font-bold text-2xl text-green-btn-text text-center">
                   {isNaN(netCGA)
-                    ? "$0"
-                    : netCGA < 0
-                    ? `- $${Math.abs(netCGA)}`
+                    ? "$0" // If 'netCGA' is not a number, display "$0"
+                    : netCGA < 0 //if less than 0 ?
+                    ? `- $${Math.abs(netCGA)}` //If -ve, put -ve before $
                     : `$${netCGA}`}
                 </p>
               </div>
               {/* The tax you need to pay */}
-              <div className="bg-btn-blue py-5 px-9 rounded-lg lg:flex-1">
-                <p className="text-base text-f-primary mb-2  w-[221px] mx-auto font-medium">
+              <div className="bg-btn-blue py-5 px-9  rounded-lg mx-auto lg:flex-1">
+                <p className="text-base text-f-primary mb-2 w-[221px] mx-auto  font-medium">
                   The tax you need to pay*
                 </p>
                 <p className="font-bold text-2xl text-blue-btn-text text-center">
                   {taxToPay
-                    ? taxToPay < 0
-                      ? `-$${Math.abs(taxToPay).toFixed(1)}`
+                    ? taxToPay < 0 //if less than 0
+                      ? `-$${Math.abs(taxToPay).toFixed(1)}` //If -ve, put -ve before $
                       : `$${taxToPay.toFixed(1)}`
                     : "$0"}
                 </p>
@@ -342,7 +343,7 @@ const CryptoTaxCalculator = () => {
           </div>
         </div>
         {/* FAQ */}
-        <div className="bg-white w-[99%] max-w-[55.0625rem] mx-auto  pt-12 pb-16 lg:pt-6 lg:px-6 lg:pb-10 rounded-2xl">
+        <div className="bg-white w-[99%] sm:w-full xl:w-[55.0625rem] max-w-[55.0625rem] mx-auto  pt-12 pb-16 lg:pt-6 lg:px-6 lg:pb-10 rounded-2xl">
           <h2 className="text-2xl font-bold  leading-5 mb-4 lg:pb-4">
             Frequently Asked Questions
           </h2>
@@ -352,9 +353,9 @@ const CryptoTaxCalculator = () => {
         </div>
       </div>
       {/* card */}
-      <div className="w-[95%] mx-auto mt-[4.25rem] mb-[3.875rem] lg:mt-7 lg:mb-0">
+      <div className="w-[95%] sm:w-full mx-auto  mt-[4.25rem] mb-[3.875rem] lg:mt-7 lg:mb-0">
         <MobileCard className="xl:hidden" />
-        <DesktopCard className="hidden xl:block" />
+        <DesktopCard className="hidden xl:block xl:mx-0" />
       </div>
     </div>
   );
