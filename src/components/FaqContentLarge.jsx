@@ -5,7 +5,7 @@ const FaqContentLarge = (props) => {
     <div className={`w-full ${props.className ? props.className : ""}`}>
       {faqLarge.map((faq, index) => {
         return (
-          <div key={faq.question} className="my-[15px]">
+          <div key={index} className="my-[15px]">
             {faq?.question && (
               <h4 className=" text-xl font-bold  leading-[21.6px]">
                 {index + 1}. {faq?.question}
@@ -19,9 +19,9 @@ const FaqContentLarge = (props) => {
               {faq?.answer2}
             </p>
             <ul className="text-base font-medium    leading-[25.6px] list-disc ps-4">
-              {faq?.lists?.map((list) => {
+              {faq?.lists?.map((list, index) => {
                 return (
-                  <li className="mt-[10px]">
+                  <li className="mt-[10px]" key={index}>
                     <span className="font-bold ">{list?.listHead}</span>
                     {list?.listBody}
                   </li>
@@ -40,7 +40,9 @@ const FaqContentLarge = (props) => {
               </h4>
               {faq?.numberListBody?.map((body, index) => {
                 return (
-                  <p className="text-base font-medium  leading-[25.6px]">
+                  <p
+                    className="text-base font-medium  leading-[25.6px]"
+                    key={index}>
                     <span>{index + 1}.</span> {body}
                   </p>
                 );
@@ -52,7 +54,9 @@ const FaqContentLarge = (props) => {
               </h4>
               {faq?.numberListBody2?.map((body, index) => {
                 return (
-                  <p className="text-base font-medium  leading-[25.6px]">
+                  <p
+                    className="text-base font-medium  leading-[25.6px]"
+                    key={index}>
                     <span>{index + 1}.</span> {body}
                   </p>
                 );

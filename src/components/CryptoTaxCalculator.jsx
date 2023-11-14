@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { investmentTypeTerm } from "../utils/investTypeTerm";
+import FlagSelect from "./FlagSelect";
 
 const CryptoTaxCalculator = () => {
   // state for reading input
@@ -116,30 +117,29 @@ const CryptoTaxCalculator = () => {
       <h1 className=" font-bold text-2xl leading-[2.125rem] text-center pb-7 lg:pb-10">
         Free Crypto Tax Calculator Australia
       </h1>
+
       <div className=" w-full max-w-[44.5625rem] flex flex-col gap-6  ">
         {/* first row */}
-        <div className="flex gap-5">
+        <div className="flex gap-10">
           {/* financial entry */}
-          <div className=" flex w-full flex-col sm:flex-row sm:gap-2 sm:items-center">
+          <div className=" flex w-full flex-col sm:flex-row sm:justify-between sm:items-center">
             <label className="text-f-primary text-sm lg:text-[0.9375rem] w-40 ">
               Financial Year
             </label>
-            <select className="bg-default-gray w-full h-10 px-4 py-2 max-w-[17.0625rem] md:h-12 md:p-3 rounded-lg">
-              <option className="text-f-primary text-base font-medium ">
-                FY 2023-24
-              </option>
-            </select>
+            <div className="bg-default-gray w-full h-10 pe-4 max-w-[17.0625rem] md:h-12  rounded-lg">
+              <select className="bg-default-gray w-full h-full   p-3 rounded-lg outline-none">
+                <option className="text-f-primary text-base font-medium ">
+                  FY 2023-24
+                </option>
+              </select>
+            </div>
           </div>
           {/* country */}
           <div className=" flex w-full flex-col sm:flex-row sm:gap-2 sm:items-center">
             <label className="text-f-primary text-sm lg:text-[0.9375rem]">
               Country
             </label>
-            <select className="bg-default-gray w-full  h-10 px-4 py-2 max-w-[17.0625rem] md:h-12 md:p-3 rounded-lg">
-              <option className="text-f-primary text-base font-medium">
-                Australia
-              </option>
-            </select>
+            <FlagSelect />
           </div>
         </div>
         {/* end of first row */}
@@ -255,16 +255,18 @@ const CryptoTaxCalculator = () => {
             <label className="text-f-primary text-sm text-[0.9375rem] mb-[6px]">
               Select Your Annual Income
             </label>
-            <select
-              className="bg-default-gray w-full h-10 px-4 py-2 md:h-12 md:p-3 rounded-lg"
-              value={selectedAnnualIncomeOption}
-              onChange={handleAnnualIncomeChange}>
-              <option value="$0 - $18,200">$0 - $18,200</option>
-              <option value="$18,201 - $45,000">$18,201 - $45,000</option>
-              <option value="$45,001 - $120,000">$45,001 - $120,000</option>
-              <option value="$120,001 - $180,000">$120,001 - $180,000</option>
-              <option value="$180,001+">$180,001+</option>
-            </select>
+            <div className="bg-default-gray w-full h-10  md:h-12 pe-4  rounded-lg">
+              <select
+                className="bg-default-gray w-full h-full  px-4 py-2 md:h-12 md:p-3 rounded-lg outline-none font-medium text-base lg:text-lg"
+                value={selectedAnnualIncomeOption}
+                onChange={handleAnnualIncomeChange}>
+                <option value="$0 - $18,200">$0 - $18,200</option>
+                <option value="$18,201 - $45,000">$18,201 - $45,000</option>
+                <option value="$45,001 - $120,000">$45,001 - $120,000</option>
+                <option value="$120,001 - $180,000">$120,001 - $180,000</option>
+                <option value="$180,001+">$180,001+</option>
+              </select>
+            </div>
           </div>
           {/* Tax rate */}
           <div className=" flex items-center gap-2 lg:flex-col  lg:self-end    w-full ">
