@@ -3,7 +3,8 @@
 Welcome to the Free Crypto Tax Calculator for Australia project, created as part of the KoinX frontend intern challenge! This single-page web application is designed to assist users in calculating their crypto gains, tax rates, and taxes based on their financial data. The project is built using React.js and draws inspiration from the Figma design, accessible [here](https://figmashort.link/bREHpN).
 
 ### Screen Shot
-![koinx3](https://github.com/karthik-mohan23/Frontend-Intern-Assignment/assets/132973611/875d851a-c241-485e-b75a-99390977f44d)
+![koinx3](https://github.com/karthik-mohan23/Frontend-Intern-Assignment/assets/132973611/ba6633b1-0159-44d7-b14c-bc1fdb538ce0)
+
 
 
 
