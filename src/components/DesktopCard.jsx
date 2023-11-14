@@ -17,7 +17,7 @@ const DesktopCard = (props) => {
               for FREE
             </h4>
           </div>
-          <p className="max-w-[359px] text-center text-[#F2F2F2] font-medium text-sm">
+          <p className="max-w-[359px] text-center text-[#F2F2F2] font-medium text-sm leading-6">
             With our range of features that you can equip for free, KoinX allows
             you to be more educated and aware of your tax reports.
           </p>
