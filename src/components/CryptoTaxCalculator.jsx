@@ -120,7 +120,7 @@ const CryptoTaxCalculator = () => {
 
       <div className=" w-full max-w-[44.5625rem] flex flex-col gap-6  ">
         {/* first row */}
-        <div className="flex gap-10">
+        <div className="flex gap-5 xl:gap-10">
           {/* financial entry */}
           <div className=" flex w-full flex-col sm:flex-row sm:justify-between sm:items-center">
             <label className="text-f-primary text-sm lg:text-[0.9375rem] w-40 ">
@@ -135,7 +135,7 @@ const CryptoTaxCalculator = () => {
             </div>
           </div>
           {/* country */}
-          <div className=" flex w-full flex-col sm:flex-row sm:gap-2 sm:items-center">
+          <div className=" flex w-full flex-col sm:flex-row sm:gap-2 sm:items-center h-10 md:h-12">
             <label className="text-f-primary text-sm lg:text-[0.9375rem]">
               Country
             </label>
@@ -205,7 +205,7 @@ const CryptoTaxCalculator = () => {
             <p className="text-f-primary text-sm pb-[6px] leading-6">
               Investment Type
             </p>
-            {/* button 1 */}
+            {/* button  */}
             <div className=" flex  w-full gap-[10px] items-center">
               {investmentTypeTerm?.map((type, index) => (
                 <div
@@ -213,7 +213,7 @@ const CryptoTaxCalculator = () => {
                   onClick={() => handleBtnIndex(index)}
                   className="flex flex-col w-full">
                   <button
-                    className={`text-xs md:text-lg    py-[12.5px] lg:py-[17px]   font-medium rounded-lg mb-1 flex-1 flex justify-center items-center gap-1 ${
+                    className={`text-xs md:text-lg  ps-3 pe-1 sm:pe-0 py-[12.5px] lg:py-[17px]   font-medium rounded-lg mb-1 flex-1 flex  items-center gap-4 ${
                       index === btnIndex
                         ? "border-2 border-default-blue bg-default-blue text-default-blue bg-opacity-5"
                         : "border  border-btn-border-gray"
@@ -225,7 +225,7 @@ const CryptoTaxCalculator = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          strokeWidth={1.5}
+                          strokeWidth={2.5}
                           stroke="currentColor"
                           className="w-4 h-4 md:w-6 md:h-6">
                           <path
