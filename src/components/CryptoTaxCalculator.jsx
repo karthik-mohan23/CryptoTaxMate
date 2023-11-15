@@ -118,7 +118,7 @@ const CryptoTaxCalculator = () => {
         Free Crypto Tax Calculator Australia
       </h1>
 
-      <div className=" w-full max-w-[44.5625rem] flex flex-col gap-6  ">
+      <div className=" w-full max-w-[44.5625rem] flex flex-col gap-7  ">
         {/* first row */}
         <div className="flex gap-5 xl:gap-10">
           {/* financial entry */}
@@ -213,7 +213,7 @@ const CryptoTaxCalculator = () => {
                   onClick={() => handleBtnIndex(index)}
                   className="flex flex-col w-full">
                   <button
-                    className={`text-xs md:text-lg  ps-3 pe-1 sm:pe-0 py-[12.5px] lg:py-[17px]   font-medium rounded-lg mb-1 flex-1 flex  items-center gap-4 ${
+                    className={`text-xs md:text-lg  ps-3 pe-1 sm:pe-0 py-[12.5px] lg:py-[17px]   font-medium rounded-lg mb-1 flex-1 flex sm:justify-center lg:justify-normal items-center gap-4 ${
                       index === btnIndex
                         ? "border-2 border-default-blue bg-default-blue text-default-blue bg-opacity-5"
                         : "border  border-btn-border-gray"
